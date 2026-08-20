@@ -36,15 +36,24 @@ GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 # POSTGRESQL
 # =========================
 
-DB_CONFIG = {
-    "host": "127.0.0.1",
-    "port": 5432,
-    "dbname": "bharatai",
-    "user": "u0_a277",
-}
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if DATABASE_URL:
+    DB_CONFIG = {
+        "dsn": DATABASE_URL,
+    }
+else:
+    DB_CONFIG = {
+        "host": "127.0.0.1",
+        "port": 5432,
+        "dbname": "bharatai",
+        "user": "u0_a277",
+    }
 
 
 def get_db_connection():
+    if "dsn" in DB_CONFIG:
+        return psycopg2.connect(DB_CONFIG["dsn"])
     return psycopg2.connect(**DB_CONFIG)
 
 
