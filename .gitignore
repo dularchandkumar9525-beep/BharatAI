@@ -8,3 +8,6 @@ venv/
 .next/
 node_modules/
 *.sql
+
+backend/*_BEFORE_*.py
+backend/*.whl
