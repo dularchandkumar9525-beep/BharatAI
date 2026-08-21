@@ -1,5 +1,6 @@
 import "./globals.css";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata = {
   title: "BharatAI - Sarkari Yojana Portal",
@@ -15,6 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         {children}
+        <WhatsAppButton />
         <Footer />
       </body>
     </html>
